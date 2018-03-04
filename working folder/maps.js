@@ -85,7 +85,7 @@ function initializeMap() {
                     zIndex: i,
                     opacity: 0.8,
                     //replace this url to next page
-                    url: 'https://i.imgur.com/RpaZ6oa.png',
+                    url: 'legend.html',
                   }
                 )
                 markers[i] = marker;
@@ -94,7 +94,7 @@ function initializeMap() {
                   var pos0 = [beachMarker.getPosition().lat(), beachMarker.getPosition().lng()];
                   var pos2 = [this.getPosition().lat(), this.getPosition().lng()];
                   var dist =getDistance(pos0, pos2)
-                //  console.log(dist);
+                  console.log(dist);
                   if(dist < 100)
                     {
                       window.location.href = marker.url;
