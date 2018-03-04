@@ -1,11 +1,11 @@
-Array.prototype.repeat= function(what, L){
- while(L) this[--L]= what;
- return this;
-}
-
+var markers = [];
 var rad = function(x) {
   return x * Math.PI / 180;
 };
+
+var infowindow2 = new google.maps.InfoWindow({
+          content: "You are too far to read"
+        });
 
 var getDistance = function(p1, p2) {
   var R = 6378137; // Earth’s mean radius in meter
@@ -19,9 +19,7 @@ var getDistance = function(p1, p2) {
   return d; // returns the distance in meter
 };
 
-var pos0= [0,0];
 var beachMarker;
-var mapMarkerPos = [].repeat([0,0],10);
 
 function initializeMap() {
   console.log('initialize');
@@ -51,8 +49,6 @@ function initializeMap() {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            pos0[0]=pos.lat;
-            pos0[1]=pos.lng;
             beachMarker.setPosition(pos);
             map.setCenter(pos);
             var shape = {
@@ -92,15 +88,19 @@ function initializeMap() {
                     url: 'https://i.imgur.com/RpaZ6oa.png',
                   }
                 )
+                markers[i] = marker;
                 marker.setPosition(pos1);
-                mapMarkerPos[i][0]=pos1.lat;
-                mapMarkerPos[i][1]=pos1.lng;
                 google.maps.event.addListener(marker, 'click', function() {
-
-                  var dist =getDistance(pos0, mapMarkerPos[marker.zIndex])
+                  var pos0 = [beachMarker.getPosition().lat(), beachMarker.getPosition().lng()];
+                  var pos2 = [this.getPosition().lat(), this.getPosition().lng()];
+                  var dist =getDistance(pos0, pos2)
+                //  console.log(dist);
                   if(dist < 100)
-                    { console.log(dist);
+                    {
                       window.location.href = marker.url;
+                    }else {
+                      infowindow2.open(map,this);
+
                     }});
               }
           }, function() {
