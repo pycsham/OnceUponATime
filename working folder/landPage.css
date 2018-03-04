@@ -32,7 +32,7 @@
 }
 
 body {
-    font-family: Lato;
+    font-family: Sofia;
     color: white;
 }
 
@@ -58,5 +58,7 @@ hr {
 	background: #F1D04D;
 	color: white;
 	padding: 20px 40px;
-	font-size: 30px;
+	font-size: 50px;
+	width: 55%;
+
 }
