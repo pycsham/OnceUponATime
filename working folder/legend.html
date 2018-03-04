@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Legends</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Sofia", sans-serif}
 body {background-color: black;}
@@ -41,8 +49,69 @@ body {background-color: black;}
   background-color: #616161;
   color: white;
 }
+
+.bottomnav {
+  overflow: hidden;
+  background-color: #F1D04D;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottomnav  a {
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 70px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.bottomnav  a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.bottomnav  a.previous {
+  background-color: #ffeb3b;
+  color: black;
+  float: left;
+}
+
+.bottomnav a.next {
+  float: right;
+  padding: 14px 70px;
+  background-color: #616161;
+  color: white;
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.modal-header {
+  background-color: #ffeb3b;
+}
+
+/*.main {
+  padding: 16px;
+  margin-bottom: 30px;
+}*/
 </style>
 <body class="w3-light-grey">
+
+  <div id="overlay" onclick="off()">
+  </div>
 
 <!-- w3-content defines a container for fixed size centered content,
 and is wrapped around the whole page content, except for the footer in this example -->
@@ -51,7 +120,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- Header -->
 <div class="topnav">
   <a class="active" href="#home">190 Legends Way</a>
-  <a class="create" href="#create">Create</a>
+  <a class="create" href="#create" data-toggle="modal" data-target="#Modal">Create</a>
 </div>
 
 
@@ -71,9 +140,10 @@ and is wrapped around the whole page content, except for the footer in this exam
     <div class="w3-container">
       <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
         tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <iframe width="335" height="200" src="https://www.youtube.com/embed/wdSXq3PS1nc?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       <div class="w3-row">
         <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>Edit »</b></button></p>
+          <p><button class="btn btn-info" id="edit" onclick="on()" data-toggle="modal" data-target="#Modal"><b>Edit »</b></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
           <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
@@ -87,15 +157,16 @@ and is wrapped around the whole page content, except for the footer in this exam
   <img src="https://static.boredpanda.com/blog/wp-content/uploads/2016/11/Saluki-blue-eyes-5829ca6703c4b__700.jpg" alt="Norway" style="width:100%">
     <div class="w3-container">
       <h3><b>BLOG ENTRY</b></h3>
-      <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
+      <h5><span class="w3-opacity">April 2, 2014</span></h5>
     </div>
 
     <div class="w3-container">
       <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
         tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/185897346&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
       <div class="w3-row">
         <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>Edit »</b></button></p>
+          <p><button class="btn btn-info" id="edit" onclick="on()" data-toggle="modal" data-target="#Modal"><b>Edit »</b></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
           <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
@@ -107,15 +178,16 @@ and is wrapped around the whole page content, except for the footer in this exam
   <img src="https://i.pinimg.com/736x/63/0a/4a/630a4a0f42c7c88d9558ed98275a51b3--fairytale-art-wildlife-art.jpg" alt="Norway" style="width:100%">
     <div class="w3-container">
       <h3><b>BLOG ENTRY</b></h3>
-      <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
+      <h5><span class="w3-opacity">April 2, 2014</span></h5>
     </div>
 
     <div class="w3-container">
       <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
         tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/185894174&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
       <div class="w3-row">
         <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>Edit »</b></button></p>
+          <p><button class="btn btn-info" id="edit" onclick="on()" data-toggle="modal" data-target="#Modal"><b>Edit »</b></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
           <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
@@ -127,11 +199,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 </div>
 
 <!-- Introduction menu -->
-<div class="w3-col l4">
+<div class="w3-col l4" style="margin-bottom: 30px;">
   <!-- About Card -->
 
   <!-- Posts -->
-  <div class="w3-card w3-margin">
+  <div class="w3-card w3-margin" >
     <div class="w3-container w3-padding w3-yellow">
       <h4>Popular Posts</h4>
     </div>
@@ -139,17 +211,17 @@ and is wrapped around the whole page content, except for the footer in this exam
       <li class="w3-padding-16">
         <img src="https://static.boredpanda.com/blog/wp-content/uploads/2015/04/surreal-watercolor-paintings-stephanie-pui-mun-7.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">Lorem</span><br>
-        <span>100 metres Away</span>
+        <span class="w3-opacity">100 metres Away</span>
       </li>
       <li class="w3-padding-16">
         <img src="https://media.istockphoto.com/photos/colored-fairytale-ship-in-the-blue-sea-kids-drawing-picture-id529221315" alt="Image" class="w3-left w3-margin-right" style="width:50px;height:60px">
         <span class="w3-large">Ipsum</span><br>
-        <span>30 metres Away</span>
+        <span class="w3-opacity">30 metres Away</span>
       </li>
       <li class="w3-padding-16">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuMA1wPN_Omjg01ZuQ0sODwqfT-8qgyGkN8z90eT2lQr-r1HaM" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">Dorum</span><br>
-        <span>50 metres Away</span>
+        <span class="w3-opacity">50 metres Away</span>
       </li>
     </ul>
   </div>
@@ -160,21 +232,59 @@ and is wrapped around the whole page content, except for the footer in this exam
 </div>
 
 <!-- END GRID -->
+<div class="bottomnav">
+  <a class="previous" href="#previous">Previous</a>
+  <a class="next" href="#next">Next</a>
+</div>
 </div><br>
 
-<!-- END w3-content -->
+<div class="modal fade" id="Modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Start Creating!</h4>
+        <button type="button" class="close" data-dismiss="modal" onclick="off()">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <button type="button" class="btn btn-primary btn-xl">Music</button>
+        <button type="button" class="btn btn-success btn-xl">Text</button>
+        <button type="button" class="btn btn-info btn-xl">Video</button>
+        <button type="button" class="btn btn-warning btn-xl">Photo</button>
+        <button type="button" class="btn btn-danger btn-xl">AR</button>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="off()">Close</button>
+      </div>
+
+    </div>
+  </div>
 </div>
 
+<!-- END w3-content -->
 <!-- Footer -->
-<div class="bottomnav">
-  <a class="active" href="#home">190 Legends Way</a>
-  <a class="create" href="#create">Create</a>
 </div>
+
+
 <!-- <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
   <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
   <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer> -->
+<script>
+function on() {
+    document.getElementById("overlay").style.display = "block";
+}
 
+function off() {
+    document.getElementById("overlay").style.display = "none";
+}
+</script>
 </body>
 </html>
